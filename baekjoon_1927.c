@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-// ¹éÁØ 1927 - ÃÖ¼Ò Èü
-// C++·Î µ¹¸®¸é ½Ã°£ ÃÊ°ú
-// C·Î µ¹¸®´Ï±î µÊ
-// 1Â÷¿ø ¹è¿­ arr ÀÌ¿ë
-// arr[1] -> ·çÆ® ³ëµå, arr[2] : ·çÆ®ÀÇ ¿ŞÂÊ ÀÚ½Ä ³ëµå, arr[3] = ·çÆ®ÀÇ ¿À¸¥ÂÊ ÀÚ½Ä ³ëµå
+// ë°±ì¤€ 1927 - ìµœì†Œ í™
+// C++ë¡œ ëŒë¦¬ë©´ ì‹œê°„ ì´ˆê³¼
+// Cë¡œ ëŒë¦¬ë‹ˆê¹Œ ë¨
+// 1ì°¨ì› ë°°ì—´ arr ì´ìš©
+// arr[1] : ë£¨íŠ¸ ë…¸ë“œ, arr[2] : ë£¨íŠ¸ì˜ ì™¼ìª½ ìì‹ ë…¸ë“œ, arr[3] : ë£¨íŠ¸ì˜ ì˜¤ë¥¸ìª½ ìì‹ ë…¸ë“œ
 
 int main()
 {
@@ -12,11 +12,11 @@ int main()
 	scanf("%d", &n);
 	
 	int arr[100001];
-	arr_n = 0; // Èü¿¡ ÀÖ´Â ³ëµåÀÇ °³¼ö
+	arr_n = 0; // í™ì— ìˆëŠ” ë…¸ë“œì˜ ê°œìˆ˜
 	for (int i = 0; i < n; i++)
 	{		
 		scanf("%d", &x);
-		if (x > 0) // ³ëµå Ãß°¡
+		if (x > 0) // ë…¸ë“œ ì¶”ê°€
 		{
 			arr_n++;
 			arr[arr_n] = x;
@@ -35,7 +35,7 @@ int main()
 			}
 			
 		}
-		else // x = 0, ·çÆ® Ãâ·Â & »èÁ¦
+		else // x = 0, ë£¨íŠ¸ ì¶œë ¥ & ì‚­ì œ
 		{
 			if (arr_n == 0) printf("0\n");
 			else if (arr_n == 1)
@@ -53,19 +53,19 @@ int main()
 				int parent_idx = 1;
 				int child_left_idx, child_right_idx;
 
-				// »èÁ¦ÇÏ°í ·çÆ®¹Û¿¡ ¾È ³²¾ÒÀ» ¶§ (parent°¡ ¸®ÇÁ ³ëµåÀÎÁö È®ÀÎ)
+				// ì‚­ì œí•˜ê³  ë£¨íŠ¸ë°–ì— ì•ˆ ë‚¨ì•˜ì„ ë•Œ (parentê°€ ë¦¬í”„ ë…¸ë“œì¸ì§€ í™•ì¸)
 				while (!(parent_idx * 2 > arr_n))
-				{ // ÀÚ½Ä ³ëµå È®ÀÎ
+				{ // ìì‹ ë…¸ë“œ í™•ì¸
 					child_left_idx = parent_idx * 2;
 					child_right_idx = child_left_idx + 1;
-					// 1. ÀÚ½ÄÀÌ µÎ¸í -> ´õ ÀÛÀº ÀÚ½Ä ³ëµå ºñ±³, Å« ÀÚ½Ä ³ëµå ºñ±³, µÑ´Ù Å©¸é Á¾·á
+					// 1. ìì‹ì´ ë‘ëª… -> ë” ì‘ì€ ìì‹ ë…¸ë“œ ë¹„êµ, í° ìì‹ ë…¸ë“œ ë¹„êµ, ë‘˜ë‹¤ í¬ë©´ ì¢…ë£Œ
 					if (parent_idx * 2 + 1 <= arr_n)
 					{
 						int big_child_idx = (arr[child_left_idx] > arr[child_right_idx] ? child_left_idx : child_right_idx);
 						int small_child_idx = (big_child_idx == child_left_idx ? child_right_idx : child_left_idx);
 						if (arr[small_child_idx] < arr[parent_idx])
 						{
-							// ºÎ¸ğ ³ëµå¿Í ÀÚ½Ä ³ëµå ¹Ù²Ù±â
+							// ë¶€ëª¨ ë…¸ë“œì™€ ìì‹ ë…¸ë“œ ë°”ê¾¸ê¸°
 							int tmp = arr[small_child_idx];
 							arr[small_child_idx] = arr[parent_idx];
 							arr[parent_idx] = tmp;
@@ -73,7 +73,7 @@ int main()
 						}
 						else if (arr[big_child_idx] < arr[parent_idx])
 						{
-							// ºÎ¸ğ ³ëµå¿Í ÀÚ½Ä ³ëµå ¹Ù²Ù±â
+							// ë¶€ëª¨ ë…¸ë“œì™€ ìì‹ ë…¸ë“œ ë°”ê¾¸ê¸°
 							int tmp = arr[big_child_idx];
 							arr[big_child_idx] = arr[parent_idx];
 							arr[parent_idx] = tmp;
@@ -81,7 +81,7 @@ int main()
 						}
 						else break;
 					}
-					else // 2. ÀÚ½ÄÀÌ ÇÑ¸í(¿ŞÂÊ) -> ÀÚ½Ä ³ëµå ºñ±³, Å©¸é Á¾·á
+					else // 2. ìì‹ì´ í•œëª…(ì™¼ìª½) -> ìì‹ ë…¸ë“œ ë¹„êµ, í¬ë©´ ì¢…ë£Œ
 					{
 						if (arr[child_left_idx] < arr[parent_idx])
 						{
