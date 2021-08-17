@@ -1,11 +1,10 @@
 #include <iostream>
 using namespace std;
 
-// ¹éÁØ 2812¹ø - Å©°Ô ¸¸µé±â (ÀÎÅÍ³Ý Âü°í)
-// ½ºÅÃ
-// ±×¸®µð ¾Ë°í¸®Áò
-// µé¾î¿À·Á´Â ¼ö°¡ ½ºÅÃÀÇ topº¸´Ù Å©´Ù¸é popÇÏ°í ³Ö´Â´Ù(½ºÅÃÀÇ topº¸´Ù ÀÛÀ» ¶§±îÁö)
-// ¸¸¾à ´õ ÀÌ»ó ¼ö¸¦ »èÁ¦ÇÒ ¼ö ¾ø´Ù¸é(del_count) ±×³É ³Ö´Â´Ù
+// ë°±ì¤€ 2812ë²ˆ - í¬ê²Œ ë§Œë“¤ê¸° (ì¸í„°ë„· ì°¸ê³ )
+// ìŠ¤íƒ, ê·¸ë¦¬ë”” ì•Œê³ ë¦¬ì¦˜
+// ë“¤ì–´ì˜¤ë ¤ëŠ” ìˆ˜ê°€ ìŠ¤íƒì˜ topë³´ë‹¤ í¬ë‹¤ë©´ popí•˜ê³  ë„£ëŠ”ë‹¤(ìŠ¤íƒì˜ topë³´ë‹¤ ìž‘ì„ ë•Œê¹Œì§€)
+// ë§Œì•½ ë” ì´ìƒ ìˆ˜ë¥¼ ì‚­ì œí•  ìˆ˜ ì—†ë‹¤ë©´(del_count) ê·¸ëƒ¥ ë„£ëŠ”ë‹¤
 
 int arr[500001]{ 0 };
 
@@ -24,20 +23,20 @@ int main()
 	{
 		cin >> c;
 		tmp = (int)(c - '0');
-		if (del_count == k) // ¸¸¾à ¾Õ¿¡¼­ »èÁ¦¸¦ ´Ù Çß´Ù¸é µÚ¿¡ ÀüºÎ ½ºÅÃ¿¡ ³Ö´Â´Ù (¾îÂ÷ÇÇ ¾ÕºÎºÐÀÌ Ä¿¾ß Å« ¼ö°¡ ³ª¿À¹Ç·Î)
+		if (del_count == k) // ë§Œì•½ ì•žì—ì„œ ì‚­ì œë¥¼ ë‹¤ í–ˆë‹¤ë©´ ë’¤ì— ì „ë¶€ ìŠ¤íƒì— ë„£ëŠ”ë‹¤ (ì–´ì°¨í”¼ ì•žë¶€ë¶„ì´ ì»¤ì•¼ í° ìˆ˜ê°€ ë‚˜ì˜¤ë¯€ë¡œ)
 		{
 			arr[++stack_ptr] = tmp;
 		}
 		else
 		{
-			if (arr[stack_ptr] < tmp) // ½ºÅÃÀÇ topº¸´Ù ¼ö°¡ Å©´Ù¸é
+			if (arr[stack_ptr] < tmp) // ìŠ¤íƒì˜ topë³´ë‹¤ ìˆ˜ê°€ í¬ë‹¤ë©´
 			{
 				while (arr[stack_ptr] < tmp && del_count < k)
 				{
-					arr[stack_ptr] = tmp; // ½ºÅÃ¿¡¼­ pop
+					arr[stack_ptr] = tmp; // ìŠ¤íƒì—ì„œ pop
 					del_count++;
 					stack_ptr--;
-					if (stack_ptr == -1) // ½ºÅÃÀÇ topº¸´Ù ÀÛ¾ÆÁö°Å³ª ½ºÅÃ¿¡ ÀÖ´Â ¸ðµç ¼ö »èÁ¦ÇÒ ¶§±îÁö
+					if (stack_ptr == -1) // ìŠ¤íƒì˜ topë³´ë‹¤ ìž‘ì•„ì§€ê±°ë‚˜ ìŠ¤íƒì— ìžˆëŠ” ëª¨ë“  ìˆ˜ ì‚­ì œí•  ë•Œê¹Œì§€
 					{
 						
 						break;
@@ -51,7 +50,7 @@ int main()
 			}
 		}
 	}
-	for (int i = 0; i < n - k; i++) // »èÁ¦¸¦ kº¸´Ù ´ú ÇßÀ» °æ¿ì (µÚ¿¡ ÀÖ´Â ¼ö°¡ ÀüºÎ ÀÛ¾Æ¼­ ½ºÅÃ¿¡ ÀüºÎ µé¾î¿È)
+	for (int i = 0; i < n - k; i++) // ì‚­ì œë¥¼ kë³´ë‹¤ ëœ í–ˆì„ ê²½ìš° (ë’¤ì— ìžˆëŠ” ìˆ˜ê°€ ì „ë¶€ ìž‘ì•„ì„œ ìŠ¤íƒì— ì „ë¶€ ë“¤ì–´ì˜´)
 	{
 		cout << arr[i];
 	}
