@@ -27,10 +27,10 @@ void DFS(int num, int idx, int &answer, int target, vector<int> numbers)
 	DFS(num + numbers[idx], idx + 1, answer, target, numbers);
 	DFS(num - numbers[idx], idx + 1, answer, target, numbers);
 }
-// ÇÁ·Î±×·¡¸Ó½º - level2 : Å¸°Ù ³Ñ¹ö
-// queue. while loop »ç¿ëÇÏ´Â °Ô BFS¿Í À¯»ç (Âü°í ¹®Á¦)
-// ½Ã°£ ÃÊ°ú -> ±âº» BFS »ç¿ë ½Ã ½Ã°£ ÃÊ°ú ¹ß»ıÇÏ´Â µí
-// DFS·Î Ç®¾îº¸±â
+// í”„ë¡œê·¸ë˜ë¨¸ìŠ¤ - level2 : íƒ€ê²Ÿ ë„˜ë²„
+// queue. while loop ì‚¬ìš©í•˜ëŠ” ê²Œ BFSì™€ ìœ ì‚¬ (ì°¸ê³  ë¬¸ì œ)
+// ì‹œê°„ ì´ˆê³¼ -> ê¸°ë³¸ BFS ì‚¬ìš© ì‹œ ì‹œê°„ ì´ˆê³¼ ë°œìƒ
+// DFSë¡œ í’€ì–´ë³´ê¸°
 
 int main()
 {
@@ -40,7 +40,7 @@ int main()
 
 	// BFS
 	/*
-	// queue¿¡ ³Ö°í ÇÏ³ª¾¿ »©¸é¼­ °è»ê (***numbers[0]µµ ºÎÈ£ ÀÖÀ½***)
+	// queueì— ë„£ê³  í•˜ë‚˜ì”© ë¹¼ë©´ì„œ ê³„ì‚° (***numbers[0]ë„ ë¶€í˜¸ ìˆìŒ***)
 	vector<node> queue;
 	queue.push_back(node(numbers[0], 0));
 	queue.push_back(node(numbers[0] * -1, 0));
@@ -54,14 +54,14 @@ int main()
 			queue.erase(queue.begin()); // dequeue
 
 			a = root.value + numbers[i]; // +
-			queue.push_back(node(a, i)); // enqueue(»õ·Î¿î °ª)
+			queue.push_back(node(a, i)); // enqueue(ìƒˆë¡œìš´ ê°’)
 
 			a = root.value - numbers[i]; // -
-			queue.push_back(node(a, i)); // enqueue(»õ·Î¿î °ª)
+			queue.push_back(node(a, i)); // enqueue(ìƒˆë¡œìš´ ê°’)
 		}
 	}
 
-	// ¸¶Áö¸·¿¡ target°ú °°Àº °á°ú count
+	// ë§ˆì§€ë§‰ì— targetê³¼ ê°™ì€ ê²°ê³¼ count
 	for (int i = 0; i < queue.size(); i++)
 	{
 		if (queue[i].level == numbers.size() - 1 && queue[i].value == target) answer++;
@@ -70,7 +70,7 @@ int main()
 
 	// DFS
 	DFS(numbers[0], 1, answer, target, numbers);
-	DFS(numbers[0] * -1, 1, answer, target, numbers); // numbers[0]µµ ºÎÈ£ ÀÖÀ½
+	DFS(numbers[0] * -1, 1, answer, target, numbers); // numbers[0]ë„ ë¶€í˜¸ ìˆìŒ
 
 	cout << answer << endl;
 	return 0;
